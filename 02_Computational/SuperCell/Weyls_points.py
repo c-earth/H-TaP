@@ -48,7 +48,7 @@ ax.annotate(r'One H in Ta$_{16}$P$_{16}$', (80, -0.25), fontsize = 20)
 plt.savefig('dope_weyl.png', dpi = 300)
 
 fig, ax = plt.subplots(1, 1, figsize = (8, 7))
-ax.plot(pris_data*1000, '.', color = '#762130', markerfacecolor = 'w', markersize = 14, markeredgewidth = 2)
+ax.plot(pris_data*1000, '.', color = '#E33119', markerfacecolor = 'w', markersize = 14, markeredgewidth = 2)
 ax.axhline(y = 0, linewidth = 2, color = 'k', linestyle = (0, (8, 10)))
 
 ax.set_ylabel(r'$E-E_f$ [meV]', fontsize = 20)
