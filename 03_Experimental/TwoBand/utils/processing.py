@@ -126,7 +126,7 @@ def plot_fitting_params(savename, params_files):
         ax1.yaxis.get_offset_text().set_size(20)
 
         ax2.set_xlabel(r'$T$ [K]', fontsize=20)
-        ax2.set_ylabel(r'$\mu$ (cm$^2$V$^{-1}$s$^{-1}$)', fontsize=20)
+        ax2.set_ylabel(r'$\mu$ [cm$^2$V$^{-1}$s$^{-1}$]', fontsize=20)
         ax2.legend(fontsize=20, loc='center right')
         ax2.tick_params(axis='both', which='both', direction='in', labelsize=20, width=1.5, length=5)
         ax2.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText = True)
