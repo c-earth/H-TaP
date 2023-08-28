@@ -59,25 +59,33 @@ def plot_cdf(E_dos, DoS, CDF, V, suffix, zoom_range = None):
     ax0.fill_between(E_dos*scale, 0, DoS, where = (E_dos <= 0), facecolor = '#E33119', alpha = 0.25)
 
     ax0.set_xlim(min(E_dos)*scale, max(E_dos)*scale)
-    ax0.set_ylabel('DOS []', fontsize = 20)
-    ax0.tick_params(axis = 'both', which = 'both', top = False, right = False, width = 1.5, length = 5, direction = 'in', labelsize = 20)
+    ax0.set_ylabel('DOS []', fontsize = 30)
+    ax0.tick_params(axis = 'both', which = 'both', top = False, right = False, width = 1.5, length = 5, direction = 'in', labelsize = 26)
+    ax0.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText = True)
+    ax0.yaxis.get_offset_text().set_size(26)
 
     ax1.axvline(x = 0, linewidth = 2, color = 'k', linestyle = (0, (8, 10)))
     ax1.axhline(y = 0, linewidth = 2, color = 'k', linestyle = (0, (8, 10)))
-    ax1.plot(E_dos*scale, (CDF - CDF_f)*scale, '-', color = '#E33119', linewidth = 3)
+    ax1.plot(E_dos*scale, (CDF - CDF_f), '-', color = '#E33119', linewidth = 3)
 
-    ax1.set_xlabel(r'$E-E_f$ ' + f'[{Eunit}]', fontsize = 20)
-    ax1.set_ylabel(r'CDF - CDF$_f$ [$\times 10^{-3}$]', fontsize = 20)
-    ax1.tick_params(axis = 'both', which = 'both', top = False, right = False, width = 1.5, length = 5, direction = 'in', labelsize = 20)
-    ax2.set_ylabel(r'Doped Electron [cm$^{-3}$]', fontsize = 20)
-    ax2.tick_params(axis = 'both', which = 'both', top = False, right = False, width = 1.5, length = 5, direction = 'in', labelsize = 20)
+    ax1.set_xlabel(r'$E-E_f$ ' + f'[{Eunit}]', fontsize = 30)
+    ax1.set_ylabel(r'CDF$-$CDF$_f$ []', fontsize = 30)
+    ax1.tick_params(axis = 'both', which = 'both', top = False, right = False, width = 1.5, length = 5, direction = 'in', labelsize = 26)
+    ax1.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText = True)
+    ax1.yaxis.get_offset_text().set_size(26)
+    ax2.set_ylabel(r'Doped Electron [cm$^{-3}$]', fontsize = 30, rotation = -90)
+    ax2.yaxis.labelpad = 40
+    ax2.tick_params(axis = 'both', which = 'both', top = False, right = True, width = 1.5, length = 5, direction = 'in', labelsize = 26)
     ax2.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText = True)
-    ax2.yaxis.get_offset_text().set_size(20)
+    ax2.yaxis.get_offset_text().set_size(26)
 
-    fig.subplots_adjust(left = 0.15)
-    fig.subplots_adjust(right = 0.875)
-    fig.subplots_adjust(top = 0.95)
-    fig.subplots_adjust(hspace = 0)
+    fig.subplots_adjust(left = 0.2)
+    fig.subplots_adjust(right = 0.85)
+    fig.subplots_adjust(top = 0.9)
+    fig.subplots_adjust(bottom = 0.15)
+    fig.subplots_adjust(hspace = 0.2)
+
+    ax0.annotate('(b)', xy=(.025, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 
     plt.savefig(f'TaP_dos{suffix}.png', dpi = 300)
 
@@ -123,13 +131,15 @@ ax.axhline(0, linewidth = 2, color = 'k', alpha = 1, linestyle = (0, (8, 10)))
 for b in bs:
     ax.plot(k, b, '-', linewidth = 2, alpha = 1, color = '#E33119')
 ax.set_xlim((np.min(k), np.max(k)))
-ax.set_xticks(ticks = tick_pos, labels = labels, fontsize = 20)
-ax.set_ylabel(r'$E-E_f$ [eV]', fontsize = 20)
+ax.set_xticks(ticks = tick_pos, labels = labels, fontsize = 30)
+ax.set_ylabel(r'$E-E_f$ [eV]', fontsize = 30)
 ax.set_ylim((min(E_dos), max(E_dos)))
-ax.tick_params(axis = 'both', which = 'both', top = False, right = False, width = 1.5, length = 5, direction = 'in', labelsize = 20)
+ax.tick_params(axis = 'both', which = 'both', top = False, right = False, width = 1.5, length = 5, direction = 'in', labelsize = 26)
 ax.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText = True)
-ax.yaxis.get_offset_text().set_size(20)
+ax.yaxis.get_offset_text().set_size(26)
 
 fig.tight_layout()
+
+ax.annotate('(a)', xy=(.025, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 
 plt.savefig(f'TaP_band{suffix}.png', dpi = 300)
