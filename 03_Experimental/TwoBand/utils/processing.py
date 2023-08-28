@@ -84,8 +84,8 @@ def plot_residual(savename, params_files):
     for params_file in params_files:
         params = read_params(params_file)
         name = params_file.split('/')[-1][:-11]
-        ax1.plot(params[:, 0], params[:, -4]*1E-2, linestyle='-', marker='.', markersize=14, linewidth=3, label=name, color = '#2F349A')
-        ax2.plot(params[:, 0], params[:, -3]*1E-2, linestyle='-', marker='.', markersize=14, linewidth=3, label=name, color = '#2F349A')
+        ax1.plot(params[:, 0], params[:, -4]*1E-2, linestyle='-', marker='o', markersize=14, linewidth=3, label=name, color = '#2F349A')
+        ax2.plot(params[:, 0], params[:, -3]*1E-2, linestyle='-', marker='o', markersize=14, linewidth=3, label=name, color = '#2F349A')
 
     ax1.set_xlabel(r'$T$ [K]', fontsize=20)
     ax1.set_ylabel(r'RMSE of Fitted $\sigma_{xx}$ [$\Omega^{-1}$cm$^{-1}$]', fontsize=20)
@@ -180,8 +180,8 @@ def plot_relative_residual(savename, params_files):
     for params_file in params_files:
         params = read_params(params_file)
         name = params_file.split('/')[-1][:-11]
-        ax1.plot(params[:, 0], params[:, -2], linestyle='-', marker='.', markersize=14, linewidth=3, label=name, color = '#2F349A')
-        ax2.plot(params[:, 0], params[:, -1], linestyle='-', marker='.', markersize=14, linewidth=3, label=name, color = '#2F349A')
+        ax1.plot(params[:, 0], params[:, -2], linestyle='-', marker='o', markersize=14, linewidth=3, label=name, color = '#2F349A')
+        ax2.plot(params[:, 0], params[:, -1], linestyle='-', marker='o', markersize=14, linewidth=3, label=name, color = '#2F349A')
 
     ax1.set_xlabel(r'$T$ [K]', fontsize=20)
     ax1.set_ylabel(r'RMSRE of Fitted $\sigma_{xx}$ []', fontsize=20)

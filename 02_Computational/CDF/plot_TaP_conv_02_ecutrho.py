@@ -4,7 +4,7 @@ import numpy as np
 ecutrho, etot = np.loadtxt('TaP_conv_02_etot_vs_ecutrho.dat', delimiter = ' ', unpack = True)
 
 fig, ax = plt.subplots(1, 1, figsize = (8, 7))
-ax.plot(ecutrho, etot, '.-', color = '#2F349A', linewidth = 3, markersize = 14)
+ax.plot(ecutrho, etot, 'o-', color = '#2F349A', linewidth = 3, markersize = 14)
 
 ax.set_xlabel('ecutrho [Ry]', fontsize = 20)
 ax.set_ylabel(r'$E_{total}$ [Ry]', fontsize = 20)

@@ -9,8 +9,9 @@ from scipy.optimize import curve_fit
 from util.data import resolve_monotone
 
 
-def FFT(Ts_sub, Hs_sub, MRs_sub, T_max, q_min, q_max, subbg, resu_dir):
-    colors = mpl.colormaps['gnuplot'](np.linspace(0.3, 0.9, int(T_max) + 1))
+def FFT(Ts_sub, Hs_sub, MRs_sub, T_max, q_min, q_max, subbg, resu_dir, Ts):
+    base = 1000
+    colors = mpl.colormaps['gnuplot'](np.log(np.linspace(base**(0.1), base**(0.9), int(np.max(Ts))))/np.log(base))
     iHs_sub = 1/Hs_sub
     iH = np.linspace(np.min(iHs_sub), np.max(iHs_sub), 10000)
     MRs_iH = []
@@ -30,8 +31,8 @@ def FFT(Ts_sub, Hs_sub, MRs_sub, T_max, q_min, q_max, subbg, resu_dir):
         qs.append(q)
         MRs_iH_fft.append(MR_iH_fft)
 
-        ax[0].plot(iH, MR_iH, '-', color = colors[int(T)], linewidth = 3, label = f'{T} K')
-        ax[1].plot(q, np.abs(MR_iH_fft), '-', color = colors[int(T)], linewidth = 3, label = f'{T} K')
+        ax[0].plot(iH, MR_iH, '-', color = colors[int(T)-2], linewidth = 3, label = f'{T} K')
+        ax[1].plot(q, np.abs(MR_iH_fft), '-', color = colors[int(T)-2], linewidth = 3, label = f'{T} K')
         
         ax[0].tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 20)
         ax[0].ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
@@ -73,7 +74,7 @@ def lorentz(x, *p):
     return y
 
 
-def FFT_peaks(q, MR_iH_fft, r_min, r_max, T_max, resu_dir, T, subbg):
+def FFT_peaks(q, MR_iH_fft, r_min, r_max, T_max, resu_dir, T, subbg, Ts):
     
     MR_iH_fft = MR_iH_fft[(q >= r_min)*(q <= r_max)]
     q = q[(q >= r_min)*(q <= r_max)]
@@ -85,7 +86,7 @@ def FFT_peaks(q, MR_iH_fft, r_min, r_max, T_max, resu_dir, T, subbg):
     maxinds = argrelextrema(yA, np.greater)[0]
 
     ypeaks = yA[maxinds]
-    maxinds = maxinds[ypeaks/ymax > 0.2]
+    maxinds = maxinds[ypeaks/ymax > 0.3]
     ypeaks = yA[maxinds]
     qpeaks = q[maxinds]
 
@@ -99,9 +100,11 @@ def FFT_peaks(q, MR_iH_fft, r_min, r_max, T_max, resu_dir, T, subbg):
     y_poss = y_poss[accept]
     y_widthes = y_widthes[accept]
 
-    colors = mpl.colormaps['gnuplot'](np.linspace(0.3, 0.9, int(T_max) + 1))
+    base = 1000
+    colors = mpl.colormaps['gnuplot'](np.log(np.linspace(base**(0.1), base**(0.9), int(np.max(Ts))))/np.log(base))
+
     f, ax = plt.subplots(1, 1, figsize = (8,7))
-    ax.plot(q, np.abs(MR_iH_fft), '-', color = colors[int(T)], linewidth = 3, label = f'{T} K')
+    ax.plot(q, np.abs(MR_iH_fft), '-', color = colors[int(T)-2], linewidth = 3, label = f'{T} K')
     for y_amp, y_pos, y_width in zip(y_amps, y_poss, y_widthes):
         ax.plot(q, lorentz(q, y_amp, y_pos, y_width), ':', color = 'k', linewidth = 3)
     ax.tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 20)
@@ -111,12 +114,15 @@ def FFT_peaks(q, MR_iH_fft, r_min, r_max, T_max, resu_dir, T, subbg):
     ax.yaxis.get_offset_text().set_size(20)
     ax.legend(fontsize = 20, loc = 'upper right')
     
+    f.tight_layout()
     f.savefig(os.path.join(resu_dir, f'peaks_{subbg}_{T}K.png'))
     plt.close()
     return y_poss, y_widthes
 
-def signal_filter(iHs, q, MR_iH_fft, qpeaks, y_widthes, T_max, resu_dir, T, subbg):
-    colors = mpl.colormaps['gnuplot'](np.linspace(0.3, 0.9, int(T_max) + 1))
+def signal_filter(iHs, q, MR_iH_fft, qpeaks, y_widthes, T_max, resu_dir, T, subbg, Ts):
+    base = 1000
+    colors = mpl.colormaps['gnuplot'](np.log(np.linspace(base**(0.1), base**(0.9), int(np.max(Ts))))/np.log(base))
+
     f, ax = plt.subplots(2, 1, figsize = (8, 7), gridspec_kw = {'height_ratios':[3,5]})
 
     ixplot_max = 1.4
@@ -145,9 +151,8 @@ def signal_filter(iHs, q, MR_iH_fft, qpeaks, y_widthes, T_max, resu_dir, T, subb
         ixn_plot = np.linspace(0,ixplot_max,50)
         p = np.polyfit(ixn,n,1)
         yplot = np.polyval(p,ixn_plot)
-        print('slope: ',p[0],' intercept: ', p[1])
 
-        color = np.concatenate([colors[int(T)][:3], np.array([(i + 1)/numb])])
+        color = np.concatenate([colors[int(T)-2][:3], np.array([(i + 1)/numb])])
 
         ax[0].plot(iHs, yfilter, linewidth = 3, color = color)
         ax[0].scatter(iHs[mininds], yfilter[mininds], s = 50, facecolor = color, edgecolors = color, linewidth = 3, zorder = 3)
@@ -157,13 +162,14 @@ def signal_filter(iHs, q, MR_iH_fft, qpeaks, y_widthes, T_max, resu_dir, T, subb
         ax[1].scatter(iHs[mininds], n_min, s = 50, facecolor = color, edgecolors = color, linewidth = 3, zorder = 3)
         ax[1].scatter(iHs[maxinds], n_max, s = 60, facecolor = 'w', edgecolors = color, linewidth = 3, zorder = 3)
 
-    ax[0].set_ylabel(r'$\mathrm{\mathsf{\Delta}}$MR (%)', fontsize = 20)
+    ax[0].set_ylabel(r'$\mathrm{\mathsf{\Delta}}$MR [%]', fontsize = 20)
     ax[0].set_xlim([0, ixplot_max])
     ax[0].set_ylim([3*np.min(yfilter),3*np.max(yfilter)])
     ax[0].fill_between([0, np.min(iHs)], 3*np.min(yfilter),3*np.max(yfilter), color = 'grey', alpha = 0.5)
     ax[0].ticklabel_format(axis='y', style='sci', scilimits=(0,0))
     ax[0].locator_params(axis='y', nbins=5)
     ax[0].tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 20)
+    ax[0].ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
     ax[0].yaxis.get_offset_text().set_size(20)
 
     ax[1].set_xlabel(r'1/B [T$^{-1}$]', fontsize = 20)

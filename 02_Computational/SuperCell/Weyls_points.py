@@ -11,7 +11,7 @@ pris_data = np.genfromtxt(pris_file, delimiter = ',', skip_header = 1)[:, -1]
 dope_data = np.genfromtxt(dope_file, delimiter = ',', skip_header = 1)[:, -1]
 
 fig, ax = plt.subplots(1, 1, figsize = (8, 7))
-ax.plot(dope_data, '.', color = '#2F349A', markerfacecolor = 'w', markersize = 14, markeredgewidth = 2)
+ax.plot(dope_data, 'o', color = '#2F349A', markerfacecolor = 'w', markersize = 14, markeredgewidth = 3)
 ax.axhline(y = 0, linewidth = 2, color = 'k', linestyle = (0, (8, 10)))
 
 ax.set_ylabel(r'$E-E_f$ [eV]', fontsize = 20)
@@ -22,7 +22,7 @@ ax.tick_params(axis = 'both', which = 'both', top = False, right = False, width 
 fig.tight_layout()
 
 axin = inset_axes(ax, width = '100%', height = '100%', bbox_to_anchor=(0.05, .6, .45, .35), bbox_transform = ax.transAxes, loc = 3)
-axin.plot(dope_data*1000, '.', color = '#2F349A', markerfacecolor = 'w', markersize = 14, markeredgewidth = 2)
+axin.plot(dope_data*1000, 'o', color = '#2F349A', markerfacecolor = 'w', markersize = 14, markeredgewidth = 3)
 axin.axhline(y = 0, linewidth = 2, color = 'k', linestyle = (0, (8, 10)))
 
 axin.set_ylabel(r'$E-E_f$ [meV]', fontsize = 20)
@@ -48,7 +48,7 @@ ax.annotate(r'One H in Ta$_{16}$P$_{16}$', (80, -0.25), fontsize = 20)
 plt.savefig('dope_weyl.png', dpi = 300)
 
 fig, ax = plt.subplots(1, 1, figsize = (8, 7))
-ax.plot(pris_data*1000, '.', color = '#E33119', markerfacecolor = 'w', markersize = 14, markeredgewidth = 2)
+ax.plot(pris_data*1000, 'o', color = '#E33119', markerfacecolor = 'w', markersize = 14, markeredgewidth = 3)
 ax.axhline(y = 0, linewidth = 2, color = 'k', linestyle = (0, (8, 10)))
 
 ax.set_ylabel(r'$E-E_f$ [meV]', fontsize = 20)

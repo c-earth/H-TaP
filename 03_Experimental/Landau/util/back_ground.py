@@ -50,7 +50,8 @@ def pieces_poly(xm, *bspss):
 
 
 def subbg_po(Ts, Bs, MRs, po_power, T_max, resu_dir):
-    colors = mpl.colormaps['gnuplot'](np.linspace(0.3, 0.9, int(T_max) + 1))
+    base = 1000
+    colors = mpl.colormaps['gnuplot'](np.log(np.linspace(base**(0.1), base**(0.9), int(np.max(Ts))))/np.log(base))
     Bs_out = np.copy(Bs)
     Ts_out = []
     MRs_out = []
@@ -65,7 +66,7 @@ def subbg_po(Ts, Bs, MRs, po_power, T_max, resu_dir):
 
         f, ax = plt.subplots(2, 1, figsize = (8,7))
 
-        ax[0].plot(Bs, MR, '.', color = colors[int(T)], linewidth = 3, label = f'{T} K')
+        ax[0].plot(Bs, MR, '-', color = colors[int(T)-2], linewidth = 3, label = f'{T} K')
         ax[0].plot(Bs, bg, ':', color = 'k', linewidth = 3, label = 'background')
         ax[0].tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 20)
         ax[0].ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
@@ -75,7 +76,7 @@ def subbg_po(Ts, Bs, MRs, po_power, T_max, resu_dir):
         ax[0].set_ylabel(r'$MR$'+ f'[{ax[0].yaxis.get_major_formatter().get_offset()} %]', fontsize = 20)
         ax[0].legend(fontsize = 20)
 
-        ax[1].plot(Bs, MR - bg, '-', color = colors[int(T)], linewidth = 3, label = f'{T} K')
+        ax[1].plot(Bs, MR - bg, '-', color = colors[int(T)-2], linewidth = 3, label = f'{T} K')
         ax[1].tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 20)
         ax[1].ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
         ax[1].set_xlabel(r'$B$ [T]', fontsize = 20)
@@ -91,7 +92,8 @@ def subbg_po(Ts, Bs, MRs, po_power, T_max, resu_dir):
 
 
 def subbg_pp(Ts, Bs, MRs, pp_power, pieces, T_max, resu_dir):
-    colors = mpl.colormaps['gnuplot'](np.linspace(0.3, 0.9, int(T_max) + 1))
+    base = 1000
+    colors = mpl.colormaps['gnuplot'](np.log(np.linspace(base**(0.1), base**(0.9), int(np.max(Ts))))/np.log(base))
     Bs_out = np.copy(Bs)
     Ts_out = []
     MRs_out = []
@@ -107,7 +109,7 @@ def subbg_pp(Ts, Bs, MRs, pp_power, pieces, T_max, resu_dir):
 
         f, ax = plt.subplots(2, 1, figsize = (8,7))
 
-        ax[0].plot(Bs, MR, '-', color = colors[int(T)], linewidth = 3, label = f'{T} K')
+        ax[0].plot(Bs, MR, '-', color = colors[int(T)-2], linewidth = 3, label = f'{T} K')
         ax[0].plot(Bs, bg, ':', color = 'k', linewidth = 3, label = 'background')
         ax[0].vlines(bspss[:(pieces - 1)], 0, np.max(MR), linestyle = '--', color = 'k')
         ax[0].tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 20)
@@ -119,7 +121,7 @@ def subbg_pp(Ts, Bs, MRs, pp_power, pieces, T_max, resu_dir):
         ax[0].legend(fontsize = 20)
         
 
-        ax[1].plot(Bs, MR - bg, '-', color = colors[int(T)], linewidth = 3, label = f'{T} K')
+        ax[1].plot(Bs, MR - bg, '-', color = colors[int(T)-2], linewidth = 3, label = f'{T} K')
         ax[1].tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 20)
         ax[1].ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
         ax[1].set_xlabel(r'$B$ [T]', fontsize = 20)
@@ -135,7 +137,8 @@ def subbg_pp(Ts, Bs, MRs, pp_power, pieces, T_max, resu_dir):
 
 
 def subbg_de(Ts, Bs, MRs, avg_window, T_max, resu_dir):
-    colors = mpl.colormaps['gnuplot'](np.linspace(0.3, 0.9, int(T_max)))
+    base = 1000
+    colors = mpl.colormaps['gnuplot'](np.log(np.linspace(base**(0.1), base**(0.9), int(np.max(Ts))))/np.log(base))
     Ts_out = []
     MRs_out = []
 
@@ -153,7 +156,7 @@ def subbg_de(Ts, Bs, MRs, avg_window, T_max, resu_dir):
 
         f, ax = plt.subplots(2, 1, figsize = (8,7))
 
-        ax[0].plot(Bs, MR, '-', color = colors[int(T)], linewidth = 3, label = f'{T} K')
+        ax[0].plot(Bs, MR, '-', color = colors[int(T)-2], linewidth = 3, label = f'{T} K')
         ax[0].tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 20)
         ax[0].ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
         ax[0].set_xlabel(r'$B$ [T]', fontsize = 20)
@@ -162,7 +165,7 @@ def subbg_de(Ts, Bs, MRs, avg_window, T_max, resu_dir):
         ax[0].set_ylabel(r'$MR$'+ f'[{ax[0].yaxis.get_major_formatter().get_offset()} %]', fontsize = 20)
         ax[0].legend(fontsize = 20)
 
-        ax[1].plot(Bs_out, MR_out, '-', color = colors[int(T)], linewidth = 3, label = f'{T} K')
+        ax[1].plot(Bs_out, MR_out, '-', color = colors[int(T)-2], linewidth = 3, label = f'{T} K')
         ax[1].tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 20)
         ax[1].ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
         ax[1].set_xlabel(r'$B$ [T]', fontsize = 20)

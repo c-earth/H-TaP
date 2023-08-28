@@ -4,7 +4,7 @@ import numpy as np
 kpoints, etot = np.loadtxt('TaP_conv_05_etot_vs_kpoints.dat', delimiter = ' ', unpack = True)
 
 fig, ax = plt.subplots(1, 1, figsize = (8, 7))
-ax.plot(kpoints, etot, '.-', color = '#2F349A', linewidth = 3, markersize = 14)
+ax.plot(kpoints, etot, 'o-', color = '#2F349A', linewidth = 3, markersize = 14)
 
 ax.set_xlabel('kpoints []', fontsize = 20)
 ax.set_ylabel(r'$E_{total}$ [Ry]', fontsize = 20)

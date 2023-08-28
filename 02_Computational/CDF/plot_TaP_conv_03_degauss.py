@@ -4,7 +4,7 @@ import numpy as np
 degauss, etot = np.loadtxt('TaP_conv_03_etot_vs_degauss.dat', delimiter = ' ', unpack = True)
 
 fig, ax = plt.subplots(1, 1, figsize = (8, 7))
-ax.plot(degauss, etot, '.-', color = '#2F349A', linewidth = 3, markersize = 14)
+ax.plot(degauss, etot, 'o-', color = '#2F349A', linewidth = 3, markersize = 14)
 
 ax.set_xlabel('degauss [Ry]', fontsize = 20)
 ax.set_ylabel(r'$E_{total}$ [Ry]', fontsize = 20)
