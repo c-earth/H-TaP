@@ -56,7 +56,8 @@ def FFT(Ts_sub, Hs_sub, MRs_sub, T_max, q_min, q_max, subbg, resu_dir, Ts):
         plt.close()
 
     f, ax = plt.subplots(2, 1, figsize = (8,7))
-    for T, MR in zip(Ts_sub, MRs_sub):
+    markers = ['-', '--', '-.']
+    for i, (T, MR) in enumerate(zip(Ts_sub, MRs_sub)):
         MR_iH = PchipInterpolator(*resolve_monotone(iHs_sub, MR), extrapolate = False)
         MR_iH = MR_iH(iH)
 
@@ -67,8 +68,8 @@ def FFT(Ts_sub, Hs_sub, MRs_sub, T_max, q_min, q_max, subbg, resu_dir, Ts):
         qs.append(q)
         MRs_iH_fft.append(MR_iH_fft)
 
-        ax[0].plot(iH, MR_iH, '-', color = colors[int(T)-2], linewidth = 3, label = f'{T} K')
-        ax[1].plot(q, np.abs(MR_iH_fft), '-', color = colors[int(T)-2], linewidth = 3, label = f'{T} K')
+        ax[0].plot(iH, MR_iH, markers[i], color = colors[int(T)-2], linewidth = 3, label = f'{T} K')
+        ax[1].plot(q, np.abs(MR_iH_fft), markers[i], color = colors[int(T)-2], linewidth = 3, label = f'{T} K')
         
     ax[0].tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 26)
     ax[0].ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
@@ -159,6 +160,7 @@ def signal_filter(iHs, q, MR_iH_fft, qpeaks, y_widthes, T_max, resu_dir, T, subb
     base = 1000
     colors = mpl.colormaps['gnuplot'](np.log(np.linspace(base**(0.1), base**(0.9), int(np.max(Ts))))/np.log(base))
 
+    scmarkers = ['o', 'v', 's']
     f, ax = plt.subplots(2, 1, figsize = (8, 7), gridspec_kw = {'height_ratios':[3,5]}, sharex = True)
 
     ixplot_max = 1.4
@@ -191,12 +193,12 @@ def signal_filter(iHs, q, MR_iH_fft, qpeaks, y_widthes, T_max, resu_dir, T, subb
         color = np.concatenate([colors[int(T)-2][:3], np.array([(i + 1)/numb])])
 
         ax[0].plot(iHs, yfilter, linewidth = 3, color = color)
-        ax[0].scatter(iHs[mininds], yfilter[mininds], s = 50, facecolor = color, edgecolors = color, linewidth = 3, zorder = 3)
-        ax[0].scatter(iHs[maxinds], yfilter[maxinds], facecolor = 'w', edgecolors = color, s = 60, linewidth = 3, zorder = 3)
+        ax[0].scatter(iHs[mininds], yfilter[mininds], marker = scmarkers[i], s = 50, facecolor = colors[int(T)-2][:3], edgecolors = colors[int(T)-2][:3], linewidth = 3, zorder = 3)
+        ax[0].scatter(iHs[maxinds], yfilter[maxinds], marker = scmarkers[i], facecolor = 'w', edgecolors = colors[int(T)-2][:3], s = 60, linewidth = 3, zorder = 3)
 
-        ax[1].plot(ixn_plot, yplot, linestyle = '--', linewidth = 3, color = color, label = f'{round(qpeak, 2)} T')
-        ax[1].scatter(iHs[mininds], n_min, s = 50, facecolor = color, edgecolors = color, linewidth = 3, zorder = 3)
-        ax[1].scatter(iHs[maxinds], n_max, s = 60, facecolor = 'w', edgecolors = color, linewidth = 3, zorder = 3)
+        ax[1].plot(ixn_plot, yplot, linestyle = '--', linewidth = 3, color = color)
+        ax[1].scatter(iHs[mininds], n_min, marker = scmarkers[i], s = 50, facecolor = colors[int(T)-2][:3], edgecolors = colors[int(T)-2][:3], linewidth = 3, zorder = 3, label = f'{round(qpeak, 2)} T')
+        ax[1].scatter(iHs[maxinds], n_max, marker = scmarkers[i], s = 60, facecolor = 'w', edgecolors = colors[int(T)-2][:3], linewidth = 3, zorder = 3)
 
     ax[0].set_ylabel(r'$\mathrm{\mathsf{\Delta}}$MR [%]', fontsize = 30)
     ax[0].set_xlim([0, ixplot_max])
