@@ -155,8 +155,6 @@ def plot_sigma(Ts, Bxxs, Sxxs, Bxys, Sxys, resu_dir, S_scale):
     ax1.set_xlim((np.min(Bxx), np.max(Bxx)))
     ax1.yaxis.get_offset_text().set_size(26)
     ax1.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
-    ax1.annotate('(a)', xy=(.025, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
-    ax1.annotate(r'S$_{20m}$', (1, 4E5), fontsize = 30)
 
     ax2.set_xlabel(r'$B$ [T]', fontsize = 30)
     ax2.set_ylabel(r'$\sigma_{xy}$ [$\Omega^{-1}$ cm$^{-1}$]', fontsize = 30)
@@ -164,7 +162,6 @@ def plot_sigma(Ts, Bxxs, Sxxs, Bxys, Sxys, resu_dir, S_scale):
     ax2.set_xlim((np.min(Bxy), np.max(Bxy)))
     ax2.yaxis.get_offset_text().set_size(26)
     ax2.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
-    ax2.annotate('(b)', xy=(.5, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 
     cb = f.colorbar(plt.cm.ScalarMappable(cmap = cmap, norm = plt.Normalize(vmin = 2, vmax = np.max(Ts)+2)))
     cb.ax.set_title(r'$T$ [K]', fontsize = 30)
@@ -244,7 +241,6 @@ def plot_relative_residual(savename, params_files):
     ax1.xaxis.get_offset_text().set_size(26)
     ax1.yaxis.get_offset_text().set_size(26)
     ax1.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText = True)
-    ax1.annotate('(c)', xy=(.025, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 
     ax2.set_xlabel(r'$T$ $(K)$', fontsize=30)
     ax2.set_ylabel(r'RMSRE of Fitted $\sigma_{xy}$ []', fontsize=30)
@@ -252,7 +248,6 @@ def plot_relative_residual(savename, params_files):
     ax2.xaxis.get_offset_text().set_size(26)
     ax2.yaxis.get_offset_text().set_size(26)
     ax2.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText = True)
-    ax1.annotate('(d)', xy=(.5, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 
     f.tight_layout()
 

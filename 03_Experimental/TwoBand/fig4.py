@@ -66,8 +66,6 @@ axA.yaxis.get_offset_text().set_size(26)
 TsA, YeA, YhA = ref_data['T_ne'], ref_data['n_e'], ref_data['n_h'][::-1].reset_index(drop=True)
 posA = findintersection2(TsA, YeA, YhA)
 axA.axvline(x=posA[0], ymax=posA[1], color='k', ls='--', lw=2)
-axA.annotate(r'pristine', (0, 4.75E19), fontsize = 30)
-axA.annotate('(a)', xy=(.02, .96), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 
 axB = axs[0,1] 
 axB.plot(ref_data['T_uh'], ref_data['u_h'],linestyle='--',marker='s',markersize=10,linewidth=3,label='$\mu_h$', color='#2F349A')
@@ -78,8 +76,6 @@ legB.get_frame().set_linewidth(0.0)
 axB.tick_params(axis='both', which='both', direction='in', labelsize=26, width=1.5, length=5)
 axB.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText = True)
 axB.yaxis.get_offset_text().set_size(26)
-axB.annotate(r'pristine', (100, 1.3E5), fontsize = 30)
-axB.annotate('(d)', xy=(0.50, .96), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 fig.patch.set_facecolor('white')
 
 
@@ -96,8 +92,6 @@ ax1.yaxis.get_offset_text().set_size(26)
 Ts2, Ye2, Yh2 = s2_data['T(K)'], s2_data['ne(m^-3)']*cnst1, s2_data['nh(m^-3)']*cnst1
 pos1 = findintersection2(Ts2, Ye2, Yh2)
 ax1.axvline(x=pos1[0], ymax=pos1[1], color='k', ls='--', lw=2)
-ax1.annotate(r'S$_{20m}$', (0, 5.25E19), fontsize = 30)
-ax1.annotate('(b)', xy=(.02, .65), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 
 ax2 = axs[2,1] 
 ax2.plot(s2_data['T(K)'], s2_data['uh(m^2/Vs)']*cnst2,linestyle='--',marker='s',markersize=10,linewidth=3,label='$\mu_h$', color='#2F349A')
@@ -109,8 +103,6 @@ leg2.get_frame().set_linewidth(0.0)
 ax2.tick_params(axis='both', which='both', direction='in', labelsize=26, width=1.5, length=5)
 ax2.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText = True)
 ax2.yaxis.get_offset_text().set_size(26)
-ax2.annotate(r'S$_{20m}$', (100, 9E4), fontsize = 30)
-ax2.annotate('(e)', xy=(.5, .65), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 fig.patch.set_facecolor('white')
 
 ax3 = axs[1,0] 
@@ -127,8 +119,6 @@ ax3.yaxis.get_offset_text().set_size(26)
 Ts4, Ye4, Yh4 = s4_data['T(K)'], s4_data['ne(m^-3)']*cnst1, s4_data['nh(m^-3)']*cnst1
 pos3 = findintersection2(Ts4, Ye4, Yh4)
 ax3.axvline(x=pos3[0], ymax=pos3[1], color='k', ls='--', lw=2)
-ax3.annotate(r'S$_{3m}$', (0, 3.5E19), fontsize = 30)
-ax3.annotate('(c)', xy=(.02, .34), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 
 ax4 = axs[1,1]
 ax4.plot(s4_data['T(K)'], s4_data['uh(m^2/Vs)']*cnst2,linestyle='--',marker='s',markersize=10,linewidth=3,label='$\mu_h$', color='#2F349A')
@@ -141,8 +131,6 @@ ax4.tick_params(axis='both', which='both', direction='in', labelsize=26, width=1
 ax4.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText = True)
 ax4.xaxis.get_offset_text().set_size(26)
 ax4.yaxis.get_offset_text().set_size(26)
-ax4.annotate(r'S$_{3m}$', (100, 4E4), fontsize = 30)
-ax4.annotate('(f)', xy=(.5, .34), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 fig.patch.set_facecolor('white')
 
 plt.setp(ax1.get_yaxis().get_offset_text(), visible=False)

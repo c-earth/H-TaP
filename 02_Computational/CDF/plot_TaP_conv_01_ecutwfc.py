@@ -13,6 +13,5 @@ ax.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText =
 ax.yaxis.get_offset_text().set_size(26)
 
 fig.tight_layout()
-ax.annotate('(a)', xy=(.025, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 
 plt.savefig('TaP_conv_01_etot_vs_ecutwfc.png')

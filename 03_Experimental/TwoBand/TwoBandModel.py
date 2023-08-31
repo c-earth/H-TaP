@@ -7,7 +7,7 @@ from utils.model import *
 
 
 # absolute path to data folder
-data_dir = 'D:/python_project/H-TaP/03_Experimental/TwoBand/S4/'
+data_dir = 'D:/python_project/H-TaP/03_Experimental/TwoBand/S2/'
 resu_dir = data_dir[:-1] + '_two_band_fitting/'
 if not (os.path.exists(resu_dir)):
     os.makedirs(resu_dir)
@@ -139,5 +139,5 @@ plot_sigma(Temperatures, Bxxs, Sxxs, Bxys, Sxys, resu_dir, S_scale)
 
 # plot fitting parameters, residual for each model at different temperatures
 # plot_residual(f'{resu_dir}model_residual.png', params_files)
-# plot_relative_residual(f'{resu_dir}model_relative_residual.png', params_files)
-# plot_fitting_params(f'{resu_dir}_params.png', params_files)
+plot_relative_residual(f'{resu_dir}model_relative_residual.png', params_files)
+plot_fitting_params(f'{resu_dir}_params.png', params_files)

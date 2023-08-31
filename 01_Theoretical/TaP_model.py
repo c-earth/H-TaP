@@ -17,7 +17,6 @@ ax.set_ylabel(r'Doped Electron [cm$^{-3}$]', fontsize = 30)
 ax.tick_params(axis = 'both', which = 'both', top = False, right = False, width = 1.5, length = 5, direction = 'in', labelsize = 26)
 ax.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText = True)
 ax.yaxis.get_offset_text().set_size(26)
-ax.annotate('(c)', xy=(.025, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 
 fig.tight_layout()
 

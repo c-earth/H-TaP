@@ -85,8 +85,6 @@ def plot_cdf(E_dos, DoS, CDF, V, suffix, zoom_range = None):
     fig.subplots_adjust(bottom = 0.15)
     fig.subplots_adjust(hspace = 0.2)
 
-    ax0.annotate('(b)', xy=(.025, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
-
     plt.savefig(f'TaP_dos{suffix}.png', dpi = 300)
 
 plot_cdf(E_dos, DoS, CDF, V, suffix)
@@ -139,7 +137,5 @@ ax.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText =
 ax.yaxis.get_offset_text().set_size(26)
 
 fig.tight_layout()
-
-ax.annotate('(a)', xy=(.025, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
 
 plt.savefig(f'TaP_band{suffix}.png', dpi = 300)
