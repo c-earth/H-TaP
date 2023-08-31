@@ -127,7 +127,7 @@ for i, T in enumerate(Temperatures):
                                 %(T, uh, duh, nh, dnh, ue, due, ne, dne, sxx0, dsxx0, resxx, resxy, relresxx, relresxy)])
 
             # plot fitting against data
-            # plot_prediction(f'{resu_dir}model{name}_predict_{T}K.png', T, verify, BsSs, p, S_scale)
+            plot_prediction(f'{resu_dir}model{name}_predict_{T}K.png', T, verify, BsSs, p, S_scale)
             print(f'\n Sucessfully optimized fitting parameters for model {name}:')
         except:
             print(f'Unable to optimize model {name}.')

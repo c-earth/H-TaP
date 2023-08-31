@@ -86,8 +86,7 @@ def plot_MRK(Ts, Bs, MRs, rho_xx0s, cutoff, resu_dir):
     ax.tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 26)
     ax.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
     ax.yaxis.get_offset_text().set_size(26)
-    ax.annotate('(c)', xy=(.025, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
-    ax.annotate(r'S$_{20m}$', (1E4, 1E3), fontsize = 30)
+
     ax.set_xscale('log')
     ax.set_yscale('log')
 
@@ -130,8 +129,7 @@ def plot_MREK(Ts, Bs, MRs, rho_xx0s, cutoff, resu_dir, params_file = None):
     ax.tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 26)
     ax.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
     ax.yaxis.get_offset_text().set_size(26)
-    ax.annotate('(d)', xy=(.025, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
-    ax.annotate(r'S$_{20m}$', (1E4, 1E3), fontsize = 30)
+
     ax.set_xscale('log')
     ax.set_yscale('log')
 
@@ -152,8 +150,7 @@ def plot_MREK(Ts, Bs, MRs, rho_xx0s, cutoff, resu_dir, params_file = None):
     axs.set_ylabel(r'$n_T$ [norm. at 300 K]', fontsize = 30)
     axs.tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 26)
     axs.yaxis.get_offset_text().set_size(26)
-    axs.annotate('(d)', xy=(.025, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
-    axs.annotate(r'S$_{20m}$', (0, 0.6), fontsize = 30)
+
     plt.legend(fontsize = 30)
 
     f.tight_layout()
@@ -176,8 +173,6 @@ def plot_MREK(Ts, Bs, MRs, rho_xx0s, cutoff, resu_dir, params_file = None):
         ax.set_ylabel(r'$n_T$ [C cm$^{-3}$]', fontsize = 30)
         ax.tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 26)
         ax.yaxis.get_offset_text().set_size(26)
-        ax.annotate('(e)', xy=(.025, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
-        ax.annotate(r'S$_{20m}$', (0, 9), fontsize = 30)
         plt.legend(fontsize = 30)
 
         f.tight_layout()
@@ -191,8 +186,6 @@ def plot_MREK(Ts, Bs, MRs, rho_xx0s, cutoff, resu_dir, params_file = None):
         axs.set_ylabel(r'$n_T$ [norm. at 300 K]', fontsize = 30)
         axs.tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 26)
         axs.yaxis.get_offset_text().set_size(26)
-        axs.annotate('(f)', xy=(.025, .975), xycoords = 'figure fraction', horizontalalignment = 'left', verticalalignment = 'top', fontsize = 30)
-        axs.annotate(r'S$_{20m}$', (0, 0.6), fontsize = 30)
         plt.legend(fontsize = 30, loc = 'upper left')
 
         f.tight_layout()

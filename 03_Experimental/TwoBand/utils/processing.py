@@ -59,7 +59,7 @@ def plot_prediction(savename, T, model, BsSs, p, S_scale):
     ax2.plot(Bxy, Sxy_pred*1E-2, linestyle='--', marker='', markersize=10, linewidth=3, color='#E33119', label=f'predicted $Sxy$, {T}K')
     
     ax1.set_xlabel(r'$B$ [T]', fontsize=30)
-    ax1.set_ylabel(r'$\sigma_{xx}$ [$\Omega^{-1}$cm$^{-1}$]', fontsize=30)
+    ax1.set_ylabel(r'$\sigma_{xx}$ [$\Omega^{-1}$ cm$^{-1}$]', fontsize=30)
     ax1.legend(fontsize=30,loc='best')
     ax1.tick_params(axis='both', which='both', direction='in', labelsize=26, width=1.5, length=5)
     ax1.xaxis.get_offset_text().set_size(26)
@@ -67,7 +67,7 @@ def plot_prediction(savename, T, model, BsSs, p, S_scale):
     ax1.ticklabel_format(style='sci', axis='y', scilimits=(0,0), useMathText = True)
 
     ax2.set_xlabel(r'$B$ [T]', fontsize=30)
-    ax2.set_ylabel(r'$\sigma_{xy}$ [$\Omega^{-1}$cm$^{-1}$]', fontsize=30)
+    ax2.set_ylabel(r'$\sigma_{xy}$ [$\Omega^{-1}$ cm$^{-1}$]', fontsize=30)
     ax2.legend(fontsize=30,loc='best')
     ax2.tick_params(axis='both', which='both', direction='in', labelsize=26, width=1.5, length=5)
     ax2.xaxis.get_offset_text().set_size(26)

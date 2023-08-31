@@ -8,25 +8,25 @@ from util.Kohler import plot_rho, plot_MR, plot_MRK, plot_MREK
 from util.back_ground import subbg_po, subbg_pp, subbg_de
 from util.Landau import FFT, FFT_peaks, signal_filter
 
-# # MR_S2
-# data_file = 'D:/python_project/H-TaP/03_Experimental/Landau/data/MR_S2_extracted.pkl'
-# params_file = 'D:/python_project/H-TaP/03_Experimental/Landau/data/MR_S2_params.txt'
-# resu_dir = 'D:/python_project/H-TaP/03_Experimental/Landau/results/MR_S2/'
-# po_power = 7
-# pieces = 2
-# pp_power = 4
-# avg_window = 10
-# T_max = 12
-
-# MR_S4
-data_file = 'D:/python_project/H-TaP/03_Experimental/Landau/data/MR_S4_extracted.pkl'
-params_file = 'D:/python_project/H-TaP/03_Experimental/Landau/data/MR_S4_params.txt'
-resu_dir = 'D:/python_project/H-TaP/03_Experimental/Landau/results/MR_S4/'
-po_power = 5
+# MR_S2
+data_file = 'D:/python_project/H-TaP/03_Experimental/Landau/data/MR_S2_extracted.pkl'
+params_file = 'D:/python_project/H-TaP/03_Experimental/Landau/data/MR_S2_params.txt'
+resu_dir = 'D:/python_project/H-TaP/03_Experimental/Landau/results/MR_S2/'
+po_power = 7
 pieces = 2
-pp_power = 3
+pp_power = 4
 avg_window = 10
-T_max = 22
+T_max = 12
+
+# # MR_S4
+# data_file = 'D:/python_project/H-TaP/03_Experimental/Landau/data/MR_S4_extracted.pkl'
+# params_file = 'D:/python_project/H-TaP/03_Experimental/Landau/data/MR_S4_params.txt'
+# resu_dir = 'D:/python_project/H-TaP/03_Experimental/Landau/results/MR_S4/'
+# po_power = 5
+# pieces = 2
+# pp_power = 3
+# avg_window = 10
+# T_max = 22
 
 # select background options
 po = True
@@ -51,10 +51,10 @@ MRs = (rho_xxs / rho_xxs[:, :1] - 1) * 100
 
 # Kohler's rule analysis
 cutoff = 10
-# plot_rho(Ts, Bs, rho_xxs, cutoff, resu_dir)
+plot_rho(Ts, Bs, rho_xxs, cutoff, resu_dir)
 plot_MR(Ts, Bs, MRs, cutoff, resu_dir)
-# plot_MRK(Ts, Bs, MRs, rho_xxs[:, :1], cutoff, resu_dir)
-# plot_MREK(Ts, Bs, MRs, rho_xxs[:, :1], cutoff, resu_dir, params_file = params_file)
+plot_MRK(Ts, Bs, MRs, rho_xxs[:, :1], cutoff, resu_dir)
+plot_MREK(Ts, Bs, MRs, rho_xxs[:, :1], cutoff, resu_dir, params_file = params_file)
 
 Bs = Bs[10:]
 MRs = MRs[:, 10:]
