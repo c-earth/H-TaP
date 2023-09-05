@@ -52,11 +52,11 @@ def plot_prediction(savename, T, model, BsSs, p, S_scale):
     
     f, (ax1, ax2) = plt.subplots(1, 2, figsize=(16,7))
     
-    ax1.plot(Bxx, Sxx_true*1E-2, linestyle='', marker='.', markersize=10, linewidth=3, color='#2F349A', label=f'expected $Sxx$, {T}K')
-    ax1.plot(Bxx, Sxx_pred*1E-2, linestyle='--', marker='', markersize=10, linewidth=3, color='#E33119', label=f'predicted $Sxx$, {T}K')
+    ax1.plot(Bxx, Sxx_true*1E-2, linestyle='', marker='.', markersize=10, linewidth=3, color='#2F349A', label=f'expected, {T}K')
+    ax1.plot(Bxx, Sxx_pred*1E-2, linestyle='--', marker='', markersize=10, linewidth=3, color='#E33119', label=f'predicted, {T}K')
     
-    ax2.plot(Bxy, Sxy_true*1E-2, linestyle='', marker='.', markersize=10, linewidth=3, color='#2F349A', label=f'expected $Sxy$, {T}K')
-    ax2.plot(Bxy, Sxy_pred*1E-2, linestyle='--', marker='', markersize=10, linewidth=3, color='#E33119', label=f'predicted $Sxy$, {T}K')
+    ax2.plot(Bxy, Sxy_true*1E-2, linestyle='', marker='.', markersize=10, linewidth=3, color='#2F349A', label=f'expected, {T}K')
+    ax2.plot(Bxy, Sxy_pred*1E-2, linestyle='--', marker='', markersize=10, linewidth=3, color='#E33119', label=f'predicted, {T}K')
     
     ax1.set_xlabel(r'$B$ [T]', fontsize=30)
     ax1.set_ylabel(r'$\sigma_{xx}$ [$\Omega^{-1}$ cm$^{-1}$]', fontsize=30)

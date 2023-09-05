@@ -162,7 +162,7 @@ def subbg_de(Ts, Bs, MRs, avg_window, T_max, resu_dir):
         # ax[0].set_xlabel(r'$B$ [T]', fontsize = 30)
         ax[0].yaxis.get_offset_text().set_size(26)
         ax[0].figure.canvas.draw()
-        ax[0].set_ylabel(r'$MR$'+ f'[%]', fontsize = 30)
+        ax[0].set_ylabel(r'MR'+ f'[%]', fontsize = 30)
         ax[0].legend(fontsize = 24)
 
         ax[1].plot(Bs_out, MR_out, '-', color = colors[int(T)-2], linewidth = 3, label = f'{T} K')

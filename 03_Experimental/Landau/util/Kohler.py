@@ -125,7 +125,7 @@ def plot_MREK(Ts, Bs, MRs, rho_xx0s, cutoff, resu_dir, params_file = None):
         plt.plot(Bs[cutoff:]/rho0nT*1E-2, MR[cutoff:], '-', color = colors[int(T)-2], linewidth = 3)
     nTs = np.flip(np.array(nTs), axis = 0)
     ax.set_xlabel(r'$B/\rho_{0}n_T$ [T $\Omega^{-1}$ cm$^{-1}$]', fontsize = 30)
-    ax.set_ylabel(r'$MR$ [%]', fontsize = 30)
+    ax.set_ylabel(r'MR [%]', fontsize = 30)
     ax.tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 26)
     ax.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
     ax.yaxis.get_offset_text().set_size(26)
