@@ -15,7 +15,8 @@ ax.plot(dope_data*1000, 'o', color = '#2F349A', markerfacecolor = 'w', markersiz
 ax.axhline(y = 0, linewidth = 2, color = 'k', linestyle = (0, (8, 10)))
 
 ax.set_ylabel(r'$E-E_f$ [meV]', fontsize = 30)
-ax.set_xticks([])
+ax.set_xlabel('Index', fontsize = 30)
+# ax.set_xticks([])
 ax.set_ylim((-300, 600))
 ax.tick_params(axis = 'both', which = 'both', top = False, right = False, width = 1.5, length = 5, direction = 'in', labelsize = 26)
 
@@ -25,7 +26,6 @@ axin.axhline(y = 0, linewidth = 2, color = 'k', linestyle = (0, (8, 10)))
 
 axin.yaxis.set_label_position('right')
 axin.set_ylabel(r'$E-E_f$ [meV]', fontsize = 30, rotation=-90)
-axin.set_xticks([])
 axin.set_ylim((-50, 20))
 axin.set_xlim((80, 100))
 axin.tick_params(axis = 'both', which = 'both', top = False, right = False, width = 1.5, length = 5, direction = 'in', labelsize = 26)
@@ -45,7 +45,7 @@ ax.add_collection(lc)
 fig.subplots_adjust(left = 0.20)
 fig.subplots_adjust(right = 0.95)
 fig.subplots_adjust(top = 0.95)
-fig.subplots_adjust(bottom = 0.05)
+fig.subplots_adjust(bottom = 0.12)
 
 plt.savefig('dope_weyl.png', dpi = 260)
 
@@ -55,12 +55,13 @@ ax.axhline(y = 0, linewidth = 2, color = 'k', linestyle = (0, (8, 10)))
 
 ax.set_ylabel(r'$E-E_f$ [meV]', fontsize = 30)
 ax.set_ylim((-50, 20))
-ax.set_xticks([])
+ax.set_xlabel('Index', fontsize = 30)
+# ax.set_xticks([])
 ax.tick_params(axis = 'both', which = 'both', top = False, right = False, width = 1.5, length = 5, direction = 'in', labelsize = 26)
 
 fig.subplots_adjust(left = 0.20)
 fig.subplots_adjust(right = 0.95)
 fig.subplots_adjust(top = 0.95)
-fig.subplots_adjust(bottom = 0.05)
+fig.subplots_adjust(bottom = 0.12)
 
 plt.savefig('pris_weyl.png', dpi = 260)
