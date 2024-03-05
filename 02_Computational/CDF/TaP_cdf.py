@@ -37,8 +37,8 @@ def plot_cdf(E_dos, DoS, CDF, V, suffix, zoom_range = None):
     scale = 1
     Eunit = 'eV'
     if zoom_range != None:
-        n_min = np.argmin(abs(E_dos + zoom_range/2))
-        n_max = np.argmin(abs(E_dos - zoom_range/2))
+        n_min = np.argmin(abs(E_dos + 6*zoom_range/7))
+        n_max = np.argmin(abs(E_dos - zoom_range/7))
         E_dos = E_dos[n_min:n_max+1]
         DoS = DoS[n_min:n_max+1]
         CDF = CDF[n_min:n_max+1]
@@ -84,7 +84,6 @@ def plot_cdf(E_dos, DoS, CDF, V, suffix, zoom_range = None):
     fig.subplots_adjust(top = 0.9)
     fig.subplots_adjust(bottom = 0.15)
     fig.subplots_adjust(hspace = 0.2)
-
     plt.savefig(f'TaP_dos{suffix}.png', dpi = 300)
 
 plot_cdf(E_dos, DoS, CDF, V, suffix)

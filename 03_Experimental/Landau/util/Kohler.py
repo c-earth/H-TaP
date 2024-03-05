@@ -32,7 +32,7 @@ def plot_rho(Ts, Bs, rho_xxs, cutoff, resu_dir):
     ax.set_xlim((np.min(Bs[cutoff:]), np.max(Bs[cutoff:])))
     ax.yaxis.get_offset_text().set_size(26)
 
-    cb = f.colorbar(plt.cm.ScalarMappable(cmap = cmap, norm = plt.Normalize(vmin = 2, vmax = np.max(Ts)+2)))
+    cb = f.colorbar(plt.cm.ScalarMappable(cmap = cmap, norm = plt.Normalize(vmin = 2, vmax = np.max(Ts)+2)), ax=plt.gca(), )
     cb.ax.set_title(r'$T$ [K]', fontsize = 30)
     cb.ax.tick_params(length = 5, width = 1.5, labelsize = 26, which = 'both', direction = 'out')
     cb.ax.set_yscale('log')
@@ -55,12 +55,14 @@ def plot_MR(Ts, Bs, MRs, cutoff, resu_dir):
         ax.plot(Bs[cutoff:], MR[cutoff:], '-', color = colors[int(T)-2], linewidth = 3)
     ax.set_xlabel(r'$B$ [T]', fontsize = 30)
     ax.set_ylabel(r'MR [%]', fontsize = 30)
+    
     ax.tick_params(which = 'both', direction = 'in', top = False, right = False, length = 5, width = 1.5, labelsize = 26)
     ax.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText=True)
     ax.set_xlim((np.min(Bs[cutoff:]), np.max(Bs[cutoff:])))
+    ax.set_yticks([0, 1e4])
     ax.yaxis.get_offset_text().set_size(26)
 
-    cb = f.colorbar(plt.cm.ScalarMappable(cmap = cmap, norm = plt.Normalize(vmin = 2, vmax = np.max(Ts)+2)))
+    cb = f.colorbar(plt.cm.ScalarMappable(cmap = cmap, norm = plt.Normalize(vmin = 2, vmax = np.max(Ts)+2)), ax=plt.gca())
     cb.ax.set_title(r'$T$ [K]', fontsize = 30)
     cb.ax.tick_params(length = 5, width = 1.5, labelsize = 26, which = 'both', direction = 'out')
     cb.ax.set_yscale('log')

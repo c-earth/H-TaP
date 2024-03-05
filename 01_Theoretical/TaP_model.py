@@ -2,10 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-dE = np.linspace(-50, 50, 1001)
+dE = np.linspace(-60, 10, 1001)
 pi = math.pi
 
-ec = 8E15/(3*pi**2)*(2*((dE-24)**3+24**3)/1.9+((dE+40)**3-40**3)/1.1)
+ec = 8E15/(3*pi**2)*(2*((dE-5)**3+5**3)/1.9+((dE+55)**3-55**3)/1.1)
 
 fig, ax = plt.subplots(1, 1, figsize = (8, 7))
 ax.plot(dE, ec, '-', color = '#E33119', linewidth = 3)
@@ -19,5 +19,5 @@ ax.ticklabel_format(axis = 'y', style = 'sci', scilimits = (0, 0), useMathText =
 ax.yaxis.get_offset_text().set_size(26)
 
 fig.tight_layout()
-
+plt.show()
 plt.savefig('TaP_model.png', dpi = 300)
