@@ -2,7 +2,7 @@ from scipy.io import loadmat
 import matplotlib.pyplot as plt
 import numpy as np
 
-path = 1
+path = 2
 primitive_file = f'./Path {path}/primitive.mat'
 primitive_data = loadmat(primitive_file)
 
@@ -12,11 +12,14 @@ unfold_data = loadmat(unfold_file)
 E_f = primitive_data['Efermi']
 eigval = primitive_data['eigval']
 bs = (eigval - E_f).T
+ks = np.arange(len(eigval))
 
 fig, ax = plt.subplots(1, 1, figsize = (8, 7))
 ax.axhline(0, linewidth = 2, color = 'k', alpha = 1, linestyle = (0, (8, 10)))
 for b in bs:
-    ax.plot(b, '.-', linewidth = 2, alpha = 1, color = '#E33119')
+    ax.scatter(ks, b, s = 20, marker = 'o', alpha = 1, color = '#E33119')
+ax.set_xticks([])
+ax.set_yticks([-2, -1, 0, 1, 2])
 # ax.set_xticks(ticks = tick_pos, labels = labels, fontsize = 30)
 ax.set_ylabel(r'$E-E_f$ [eV]', fontsize = 30)
 ax.set_ylim((-3, 3))
@@ -36,12 +39,14 @@ bs = (eigval - E_f_u).T
 ks = np.arange(len(eigval))
 
 weights = unfold_data['sw'][0, :, :, 1].T
-weights /= np.max(weights)/10
+weights /= np.max(weights)
 
 fig, ax = plt.subplots(1, 1, figsize = (8, 7))
 ax.axhline(0, linewidth = 2, color = 'k', alpha = 1, linestyle = (0, (8, 10)))
 for b, weight in zip(bs, weights):
-    ax.scatter(ks, b, s = weight, alpha = 1, color = '#E33119')
+    ax.scatter(ks, b, s = 20*weight, marker = 'o', alpha = 1, color = '#2F349A')
+ax.set_xticks([])
+ax.set_yticks([-3, -2, -1, 0, 1, 2])
 # ax.set_xticks(ticks = tick_pos, labels = labels, fontsize = 30)
 ax.set_ylabel(r'$E-E_f$ [eV]', fontsize = 30)
 ax.set_ylim((-3-dE_f, 3-dE_f))
