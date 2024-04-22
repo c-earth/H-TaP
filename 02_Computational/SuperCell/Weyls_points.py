@@ -50,7 +50,8 @@ fig.subplots_adjust(bottom = 0.12)
 plt.savefig('dope_weyl.png', dpi = 260)
 
 fig, ax = plt.subplots(1, 1, figsize = (8, 7))
-ax.plot(pris_data*1000, 'o', color = '#E33119', markerfacecolor = 'w', markersize = 10, markeredgewidth = 3)
+# ax.plot(pris_data*1000, 'o', color = '#E33119', markerfacecolor = 'w', markersize = 10, markeredgewidth = 3)
+ax.plot(pris_data*1000, 'o', markerfacecolor = 'w', markersize = 10, markeredgewidth = 3)
 ax.axhline(y = 0, linewidth = 2, color = 'k', linestyle = (0, (8, 10)))
 
 ax.set_ylabel(r'$E-E_f$ [meV]', fontsize = 30)
