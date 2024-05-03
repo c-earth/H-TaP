@@ -2,7 +2,7 @@ from scipy.io import loadmat
 import matplotlib.pyplot as plt
 import numpy as np
 
-path = 1
+path = 2
 primitive_file = f'./Path {path}/primitive.mat'
 primitive_data = loadmat(primitive_file)
 
@@ -23,6 +23,7 @@ ax.set_xticks([])
 ax.set_yticks([-2, -1, 0, 1, 2])
 # ax.set_xticks(ticks = tick_pos, labels = labels, fontsize = 30)
 ax.set_ylabel(r'$E-E_f$ [eV]', fontsize = 30)
+ax.set_xlabel(r'$k$', fontsize = 30)
 ax.set_ylim((-3, 3))
 ax.set_xlim((0, 49))
 ax.tick_params(axis = 'both', which = 'both', top = False, right = False, width = 1.5, length = 5, direction = 'in', labelsize = 26)
@@ -52,6 +53,7 @@ ax.set_xticks([])
 ax.set_yticks([-3, -2, -1, 0, 1, 2])
 # ax.set_xticks(ticks = tick_pos, labels = labels, fontsize = 30)
 ax.set_ylabel(r'$E-E_f$ [eV]', fontsize = 30)
+ax.set_xlabel(r'$k$', fontsize = 30)
 ax.set_ylim((-3-dE_f, 3-dE_f))
 ax.set_xlim((0, 50))
 ax.tick_params(axis = 'both', which = 'both', top = False, right = False, width = 1.5, length = 5, direction = 'in', labelsize = 26)
